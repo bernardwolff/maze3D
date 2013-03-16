@@ -1,0 +1,10 @@
+# Builds the GLUT example program with MinGW.
+
+CC = gcc.exe
+CFLAGS = -Wall -O3 -I C:/MingW/include/GL
+LFLAGS = -s -lglut32 -lglu32 -lopengl32 -mwindows
+
+all: maze.exe
+
+%.exe: %.c
+	$(CC) -o $@ $< $(CFLAGS) $(LFLAGS)
