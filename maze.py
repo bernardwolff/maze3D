@@ -148,11 +148,13 @@ def load_bmp(filename):
 
 	# read the width
 	width_str = file.read(4)
-	w = unpack('L', width_str)[0]
+	# I means unsigned int, but that is not necessarily 4 bytes
+	# TODO: make this more system agnostic
+	w = unpack('I', width_str)[0]
 
 	# read the height 
 	height_str = file.read(4)
-	h = unpack('L', height_str)[0]
+	h = unpack('I', height_str)[0]
 
 	# calculate the size (assuming 24 bits or 3 bytes per pixel).
 	size = w * h * 3

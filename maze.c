@@ -128,8 +128,7 @@ enum texture_indices { FLOOR_TEX_IND, WALL_TEX_IND, CEILING_TEX_IND };
 
 // quick and dirty bitmap loader...for 24 bit bitmaps with 1 plane only. 
 // adapted from: http://nehe.gamedev.net/data/lessons/linux/lesson10.tar.gz
-int load_bmp(const char *filename, GLubyte **texels,
-	unsigned long *w, unsigned long *h)
+int load_bmp(const char *filename, GLubyte **texels, GLuint *w, GLuint *h)
 {
     FILE *file;
     unsigned long size;       // size of the image in bytes.
@@ -152,14 +151,14 @@ int load_bmp(const char *filename, GLubyte **texels,
 		printf("Error reading width from %s.\n", filename);
 		return 0;
     }
-    //printf("Width of %s: %lu\n", filename, *w);
+    //printf("Width of %s: %u\n", filename, *w);
     
     // read the height 
     if ((i = fread(h, 4, 1, file)) != 1) {
 		printf("Error reading height from %s.\n", filename);
 		return 0;
     }
-    //printf("Height of %s: %lu\n", filename, *h);
+	//printf("Height of %s: %u\n", filename, *h);
     
     // calculate the size (assuming 24 bits or 3 bytes per pixel).
     size = (*w) * (*h) * 3;
@@ -169,6 +168,7 @@ int load_bmp(const char *filename, GLubyte **texels,
 		printf("Error reading planes from %s.\n", filename);
 		return 0;
     }
+
     if (planes != 1) {
 		printf("Planes from %s is not 1: %u\n", filename, planes);
 		return 0;
@@ -921,7 +921,7 @@ void bind_texture(GLuint name, GLubyte *texels,
 void init_textures()
 {
 	GLubyte *texels = NULL;
-	unsigned long w, h;
+	GLuint w, h;
 	int i;
 
 	glGenTextures(NUM_TEXTURES, texture_names);
