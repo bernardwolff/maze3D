@@ -450,9 +450,9 @@ void draw_square(int texture_name)
 
 	if (do_lighting) glNormal3f(0.0, 0.0, 1.0);
 
-	glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_BYTE, indices);
+//	glDrawElements(GL_POLYGON, 4, GL_UNSIGNED_BYTE, indices);
 
-	/*glBegin(GL_POLYGON);
+	glBegin(GL_POLYGON);
 	if (do_texturing) glTexCoord2f(0.0, 0.0);
 	glVertex2f(x1, y1);
 	if (do_texturing) glTexCoord2f(1.0, 0.0);
@@ -461,7 +461,7 @@ void draw_square(int texture_name)
 	glVertex2f(x2, y2);
 	if (do_texturing) glTexCoord2f(0.0, 1.0);
 	glVertex2f(x1, y2);
-	glEnd();*/
+	glEnd();
 
 //	glRectf(x1, y1, x2, y2);
 
