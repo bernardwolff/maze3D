@@ -2,7 +2,7 @@
 
 CC = gcc.exe
 CFLAGS = -Wall -O3 -I C:/MingW/include/GL
-LFLAGS = -s -lglut32 -lglu32 -lopengl32 -mwindows
+LFLAGS = -s -lfreeglut -lglu32 -lopengl32 -mwindows -Wl,-subsystem,console
 
 all: maze.exe
 
