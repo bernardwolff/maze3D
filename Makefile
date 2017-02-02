@@ -12,7 +12,7 @@ ifeq ($(OS),Darwin)
 else
 ifeq ($(OS),Linux)
 	INCLUDE += -I/usr/include/GL
-	LIBS += -lglut
+	LIBS += -lglut -lm
 endif
 endif
 
